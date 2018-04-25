@@ -6,25 +6,21 @@
 
 ```swift
     if isGameStarted == false{
-/* Mäng algas: paneme Eksmati gravitatsioonile reageerima ning lisame ekraanile pausi nupu */
         isGameStarted =  true
         eksmati.physicsBody?.affectedByGravity = true
         createPauseBtn()
         
-/* Mäng algas: eemaldame logo */
         logoImg.run(SKAction.scale(to: 0.5, duration: 0.3), completion: {
             self.logoImg.removeFromParent()
         })
         taptoplayLbl.removeFromParent()
 
-       //TODO: siia lisame hiljem postid 
        
-/* Määrame kiiruse olematuks, et tagada Eksmati püsivus ning paneme ta ülespoole hüplema */
         eksmati.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         eksmati.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 40))
     } else {
     
-        /* Mäng algas, mis tähendab, et isGameStarted väärtuseks on senikauua true ning me kutsume siin välja else väärtuse, mis ütleb, et mängija rakendab ekraani puudutamist, seni kuni Eksmati pole surnud */
+ 
         if isDied == false {
             eksmati.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
             eksmati.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 40))
@@ -33,21 +29,26 @@
 ```   
 ---   
 
-**Mängi rakendust nüüd simulatoris ning kontrolli, kas ekraani vajutusel logo ja "Tap to play" kaovad eest ja Eksmati hakkab hüplema. Seniks kuni ekraani vajutada peaks Eksmati õhus püsima ning kui ekraanile vajutamine lõpetada kukub Eksmati maha.** 
+**Mängi rakendust nüüd simulatoris ning kontrolli, kas ekraani vajutusel logo ja "Tap to play" kaovad eest ja Eksmati hakkab hüplema. Seniks kuni ekraani vajutada peaks Eksmati õhus püsima ning kui ekraanile vajutamine lõpetada kukub Eksmati maha.**
 
 ---
+
+**VIDEO(1.):**
+
+<a href="https://youtu.be/zuuT1pb8cfA
+" target="_blank"><img src="http://img.youtube.com/vi/zuuT1pb8cfA/0.jpg" 
+alt="Projekti loomine" width="240" height="180" border="10" /></a>
+
 # ÜLESANNE:
 * Täida järgnevas 2. puntis olevas koodis kommentaaride all **LISA SIIA** kohtades vajalikud koodiread alumise posti loomiseks.
 ---
 
-### 2. Loome ekraanile postid ja EAP'd. Selleks avame *GameElements.swift* faili ning kirjutame sinna järgmise koodi:
+### 2. Loome ekraanile postid ja EAP'd. Selleks avame *GameElements.swift* faili ning kirjutame sinna *GameScene*'i järgmise koodi:
 
 ``` 
 
-/* Iga seinapaari ekraanile kutsumiseks jooksutatakse läbi seda funktsiooni */
 func createWalls() -> SKNode  {
 
-/* Loome EAP ning paneme ta reageerima kokkupuutel Eksmtiga */
         let eapNode = SKSpriteNode(imageNamed: "EAP")
         eapNode.size = CGSize(width: 40, height: 40)
         eapNode.position = CGPoint(x: self.frame.width + 25, y: self.frame.height / 2)
@@ -59,12 +60,12 @@ func createWalls() -> SKNode  {
         eapNode.physicsBody?.contactTestBitMask = CollisionBitMask.eksmatiCategory
         eapNode.color = SKColor.blue
         
-/* Loome SKNode objekti alumise ja ülemise posti kuvamiseks. */
+
 
         wallPair = SKNode()
         wallPair.name = "wallPair"
         
-        let topWall = SKSpriteNode(imageNamed: "pillar")
+        let topWall = SKSpriteNode(imageNamed: "post")
         // LISA SIIA btmWALL sama pildi nimega
         
         topWall.position = CGPoint(x: self.frame.width + 25, y: self.frame.height / 2 + 420)
@@ -82,7 +83,7 @@ func createWalls() -> SKNode  {
         topWall.physicsBody?.affectedByGravity = false
         // LISA SIIA järjest kõik read samamoodi btmWall jaoks(kokkupuuted posti ja eksmati kategooriaga ning gravitatsiooni ja liikumise piiramine)
         
-/* Selleks, et näidata ülemist posti üleval on vaja topWall'i keerata 180 kraadi ning seda sab teha CGFloat.pi abil */
+        
         topWall.zRotation = CGFloat.pi
         
         wallPair.addChild(topWall)
@@ -90,13 +91,13 @@ func createWalls() -> SKNode  {
         
         wallPair.zPosition = 1
         
-/* Paneme potipaari kõrgused suvaliselt jooksma vahemikus -200 ja 200 */
+
         let randomPosition = random(min: -200, max: 200)
         wallPair.position.y = wallPair.position.y +  randomPosition
         wallPair.addChild(eapNode)
         
         
-/* Liigutame postipaari horisontaalselt ning eemaldame need ekraanilt kui nad jõuuavad ekraani teise otsa */
+
         wallPair.run(moveAndRemove)
         
         return wallPair
@@ -136,6 +137,13 @@ moveAndRemove = SKAction.sequence([movePostid, removePostid])
 **Käivita rakendus simulatoris ning alusta mängu. Nüüd sa peaksid nägema paremalt ekraanile ilmuvaid poste mille vahel on EAP'd.** 
 
 ---
+
+**VIDEO(2.,3.,4.):**
+
+<a href="https://youtu.be/zuuT1pb8cfA
+" target="_blank"><img src="http://img.youtube.com/vi/zuuT1pb8cfA/0.jpg" 
+alt="Projekti loomine" width="240" height="180" border="10" /></a>
+
 >Eksmati ei kogu hetkel EAP'sid ning kui ta puutub kokku seinaga siis tiritakse ta ekraanist välja. 
 >
->Järgmises tunnis lisame funktsiooni, mis lõpetab mängu siis kui Eksmati puutub kokku seinaga ning kui Eksmati puudutab EAP'd siis suureneb ekraanil kuvatud EAP'de nuber ja ekraanilt kaob ära EAP millega just kokku puututi.
+>Järgmises tunnis lisame funktsiooni, mis lõpetab mängu siis, kui Eksmati puutub kokku seinaga ning kui Eksmati puudutab EAP'd siis suureneb ekraanil kuvatud EAP'de nuber ja ekraanilt kaob ära EAP millega just kokku puututi.
