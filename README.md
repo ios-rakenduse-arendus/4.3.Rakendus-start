@@ -45,8 +45,7 @@ alt="Projekti loomine" width="240" height="180" border="10" /></a>
 
 ### 2. Loome ekraanile postid ja EAP'd. Selleks avame *GameElements.swift* faili ning kirjutame sinna *GameScene*'i järgmise koodi:
 
-``` 
-
+``` swift
 func createWalls() -> SKNode  {
 
         let eapNode = SKSpriteNode(imageNamed: "EAP")
@@ -112,21 +111,20 @@ func random(min : CGFloat, max : CGFloat) -> CGFloat{
 
 ### 4. Kuvame ekraanile eelnevalt loodud postid. Ava *GameScene.swift* fail ja kirjutame seal ennem üles märgitud **TODO:** asemle  järgmise koodi:
 
-``` 
-/* Loome ja lisame postipaari ekraanile */
+```swift 
 let spawn = SKAction.run({
     () in
     self.wallPair = self.createWalls()
     self.addChild(self.wallPair)
 })
 
-/* Lisame ajalise vahemaa postipaari loomiste vahel ning paneme selle lõpmatuseni end välja kutsuma */
+
 let delay = SKAction.wait(forDuration: 1.5)
 let SpawnDelay = SKAction.sequence([spawn, delay])
 let spawnDelayForever = SKAction.repeatForever(SpawnDelay)
 self.run(spawnDelayForever)
 
-/* Liigutame ja eemaldame poste */
+
 let distance = CGFloat(self.frame.width + wallPair.frame.width)
 let movePostid = SKAction.moveBy(x: -distance - 50, y: 0, duration: TimeInterval(0.008 * distance))
 let removePostid = SKAction.removeFromParent()
@@ -140,8 +138,8 @@ moveAndRemove = SKAction.sequence([movePostid, removePostid])
 
 **VIDEO(2.,3.,4.):**
 
-<a href="https://youtu.be/zuuT1pb8cfA
-" target="_blank"><img src="http://img.youtube.com/vi/zuuT1pb8cfA/0.jpg" 
+<a href="https://youtu.be/_z-FwQuJikQ
+" target="_blank"><img src="http://img.youtube.com/vi/_z-FwQuJikQ/0.jpg" 
 alt="Projekti loomine" width="240" height="180" border="10" /></a>
 
 >Eksmati ei kogu hetkel EAP'sid ning kui ta puutub kokku seinaga siis tiritakse ta ekraanist välja. 
