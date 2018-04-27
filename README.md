@@ -80,7 +80,8 @@ func createWalls() -> SKNode  {
         topWall.physicsBody?.contactTestBitMask = CollisionBitMask.eksmatiCategory
         topWall.physicsBody?.isDynamic = false
         topWall.physicsBody?.affectedByGravity = false
-        // LISA SIIA järjest kõik read samamoodi btmWall jaoks(kokkupuuted posti ja eksmati kategooriaga ning gravitatsiooni ja liikumise piiramine)
+        // LISA SIIA järjest kõik read samamoodi btmWall jaoks(kokkupuuted posti
+        // ja eksmati kategooriaga ning gravitatsiooni ja liikumise piiramine)
         
         
         topWall.zRotation = CGFloat.pi
