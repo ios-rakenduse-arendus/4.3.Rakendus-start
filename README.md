@@ -109,7 +109,7 @@ func random(min : CGFloat, max : CGFloat) -> CGFloat{
 }
 ``` 
 
-### 4. Kuvame ekraanile eelnevalt loodud postid. Ava *GameScene.swift* fail ja kirjutame seal ennem üles märgitud **TODO:** asemle  järgmise koodi:
+### 4. Kuvame ekraanile eelnevalt loodud postid. Ava *GameScene.swift* fail ja kirjutame seal ennem üles märgitud **TODO:** asemele  järgmise koodi:
 
 ```swift 
 let spawn = SKAction.run({
