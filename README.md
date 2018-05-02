@@ -146,3 +146,6 @@ alt="Projekti loomine" width="240" height="180" border="10" /></a>
 >Eksmati ei kogu hetkel EAP'sid ning kui ta puutub kokku seinaga siis tiritakse ta ekraanist välja. 
 >
 >Järgmises tunnis lisame funktsiooni, mis lõpetab mängu siis, kui Eksmati puutub kokku seinaga ning kui Eksmati puudutab EAP'd siis suureneb ekraanil kuvatud EAP'de nuber ja ekraanilt kaob ära EAP millega just kokku puututi.
+
+### Teadmiste kontroll
+* Täida ülesanne *[Learningapps](https://learningapps.org/watch?v=pg7wvin2v18)* lehel. 
